@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Glamour Beauty Salon</title>
+      <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+      <header>
+        <nav>
+          <div class="logo">Beauty Gallery By Rush</div>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+	<section class="beauty-section">
+  <div class="glow-background"></div>
+  <div class="content">
+    <h1 class="animate-text">
+      <span>E</span><span>l</span><span>e</span><span>v</span><span>a</span><span>t</span><span>e</span>
+      <span>Y</span><span>o</span><span>u</span><span>r</span>
+      <span>B</span><span>e</span><span>a</span><span>u</span><span>t</span><span>y</span>
+    </h1>
+    <p id="dynamic-text" class="fade-slide"></p>
+    
+    <div class="services-grid">
+      <div class="service-card" data-service="makeup">
+        <div class="card-content">
+          <h3>Makeup</h3>
+          <p>Professional makeup artistry</p>
+        </div>
+      </div>
+      <div class="service-card" data-service="hair">
+        <div class="card-content">
+          <h3>Hair Styling</h3>
+          <p>Cutting-edge hair designs</p>
+        </div>
+      </div>
+      <div class="service-card" data-service="nails">
+        <div class="card-content">
+          <h3>Nail Art</h3>
+          <p>Creative nail artistry</p>
+        </div>
+      </div>
+      <div class="service-card" data-service="spa">
+        <div class="card-content">
+          <h3>Spa</h3>
+          <p>Luxurious treatments</p>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</section>
+<style>
+.beauty-section {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(45deg, #1a0f1f, #2c1f3d);
+  overflow: hidden;
+  padding: 4rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Stack content vertically */
+}
+
+.glow-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 117, 140, 0.1), transparent 60%);
+  z-index: 1;
+  animation: pulse 8s infinite;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.animate-text {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw + 1rem, 4rem); /* Responsive font size */
+  color: white;
+  text-align: center;
+}
+
+.animate-text span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInLetters 0.5s forwards;
+}
+
+.animate-text span:nth-child(n) {
+  animation-delay: calc(0.1s * var(--n));
+}
+
+#dynamic-text {
+  font-size: clamp(1.2rem, 2vw + .5rem, 1.8rem); /* Responsive font size */
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.service-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: calc(1rem + (2vw)); /* Responsive padding */
+    cursor: pointer;
+    transition: all .5s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: calc(200% + (10vw)); /* Responsive width */
+    height: calc(200% + (10vw)); /* Responsive height */
+    background: radial-gradient(circle, rgba(255,255,255,0.1) .1%, transparent .6%);
+    opacity: .5; /* Adjusted for visibility */
+    transition: opacity .5s ease;
+    transform: translate(-50%, -50%);
+    pointer-events:none; /* Prevent interaction */
+}
+
+.service-card:hover::before {
+    opacity:.7; /* Increased opacity on hover */
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255,255,255,.1);
+    box-shadow:0px .5rem .9rem rgba(0,0,0,.2);
+}
+
+.card-content h3 {
+    color:white; 
+    font-size:.9rem; /* Responsive font size */
+    margin-bottom:.5rem; 
+}
+
+.card-content p {
+    color:rgba(255,255,255,.7); 
+}
+
+.glow-button {
+    background: linear-gradient(45deg,#ff758c,#ff7eb3);
+    color:white; 
+    border:none; 
+    padding:.8rem calc(1rem + (1vw)); /* Responsive padding */
+    font-size:.9rem; /* Responsive font size */
+    border-radius:.5rem; 
+    cursor:pointer; 
+    transition:.3s ease; 
+    position:absolute; 
+    overflow:hidden; 
+    display:block; 
+    margin-top:.5rem; 
+}
+
+.glow-button::before {
+   content:''; 
+   position:absolute; 
+   top:-50%; 
+   left:-50%; 
+   width:200%; 
+   height :200%; 
+   background :radial-gradient(circle ,rgba(255 ,255 ,255 ,0.2) ,transparent); 
+   opacity :0; 
+   transition :opacity .3s ease; 
+   transform :translate(-50%,-50%); 
+}
+
+.glow-button:hover::before { opacity :1; }
+
+.fade-slide { opacity :0; transform :translateY(20px); animation :fadeSlideUp .5s forwards; }
+
+/* Media Queries for Mobile Optimization */
+@media (max-width:768px) {
+   .animate-text { font-size: clamp(1.5rem,3vw + .5rem ,3rem); }
+   #dynamic-text { font-size :clamp(.8rem ,2vw + .3rem ,1.5rem); }
+   .service-card { padding :calc(.8rem + (3vw)); }
+   .card-content h3 { font-size:.8rem; }
+   .card-content p { font-size:.7rem; }
+   .glow-button { padding:.6rem calc(.5rem + (2vw)); }
+}
+
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.05); opacity: 0.7; }
+  }
+
+  @keyframes fadeInLetters {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeSlideUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .animate-text {
+      font-size: 2.5rem;
+    }
+    #dynamic-text {
+      font-size: 1.4rem;
+    }
+    .services-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+</style>
+
+<script>
+const dynamicText = document.getElementById("dynamic-text");
+const phrases = [
+  "Where Artistry Meets Beauty",
+  "Luxury Treatments Await You",
+  "Discover Your Perfect Style",
+  "Transform Your Look Today"
+];
+
+let currentIndex = 0;
+
+function updateText() {
+  dynamicText.style.opacity = 0;
+  dynamicText.style.transform = 'translateY(20px)';
+  
+  setTimeout(() => {
+    dynamicText.textContent = phrases[currentIndex];
+    dynamicText.style.opacity = 1;
+    dynamicText.style.transform = 'translateY(0)';
+    currentIndex = (currentIndex + 1) % phrases.length;
+  }, 500);
+}
+
+// Initialize text animation
+updateText();
+setInterval(updateText, 4000);
+
+// Add animation delay to title letters
+const titleLetters = document.querySelectorAll('.animate-text span');
+titleLetters.forEach((letter, index) => {
+  letter.style.setProperty('--n', index);
+});
+
+// Add hover effect to service cards
+const cards = document.querySelectorAll('.service-card');
+cards.forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    card.style.setProperty('--mouse-x', `${x}px`);
+    card.style.setProperty('--mouse-y', `${y}px`);
+  });
+});
+</script>
+
+      </header>
+
+      <section id="services" class="services">
+        <h2 class="fade-in">Our Services</h2>
+        <div class="service-grid">
+          <div class="service-card fade-in">
+            <h3>Hair Styling</h3>
+            <p>Professional cuts, coloring, and treatments</p>
+          </div>
+          <div class="service-card fade-in">
+            <h3>Makeup</h3>
+            <p>Wedding, party, and special occasion makeup</p>
+          </div>
+          <div class="service-card fade-in">
+            <h3>Nails</h3>
+            <p>Manicures, pedicures, and nail art</p>
+          </div>
+          <div class="service-card fade-in">
+            <h3>Spa Treatments</h3>
+            <p>Facials, massages, and body treatments</p>
+          </div>
+        </div>
+      </section>
+
+       <section id="products" class="products">
+        <h2 class="fade-in">Our Products</h2>
+        <div class="marquee-container fade-in">
+            <div class="marquee">
+                <div class="marquee-content">
+                    <div class="product-card">
+                        <img src="marquee/spa_ceylone.png" alt="Spa Ceylone Products">
+                        <h3>Spa Ceylone</h3>
+                        <p>Luxury Spa Products</p>
+                    </div>
+                    <div class="product-card">
+                        <img src="marquee/derma_pro.png" alt="Derma Pro Products">
+                        <h3>Derma Pro</h3>
+                        <p>Professional Skincare</p>
+                    </div>
+                    <div class="product-card">
+                        <img src="marquee/bell.png" alt="Bellose Products">
+                        <h3>Bellose</h3>
+                        <p>Premium Beauty Care</p>
+                    </div>
+                    <div class="product-card">
+                        <img src="marquee/keune.png" alt="Keune Products">
+                        <h3>Keune</h3>
+                        <p>Professional Hair Care</p>
+                    </div>
+                    <div class="product-card">
+                        <img src="marquee/may.png" alt="Maybelline Products">
+                        <h3>Maybelline</h3>
+                        <p>Makeup Essentials</p>
+                    </div>
+                    <div class="product-card">
+                        <img src="marquee/joe.png" alt="Jovees Products">
+                        <h3>Jovees</h3>
+                        <p>Natural Beauty Products</p>
+                    </div>
+                </div>
+                <!-- Cloned content for seamless loop -->
+                <div class="marquee-content">
+                    <div class="product-card">
+                        <img src="marquee/spa_ceylone.png" alt="Spa Ceylone Products">
+                        <h3>Spa Ceylone</h3>
+                        <p>Luxury Spa Products</p>
+                    </div>
+                    <div class="product-card">
+                        <img src="marquee/derma_pro.png" alt="Derma Pro Products">
+                        <h3>Derma Pro</h3>
+                        <p>Professional Skincare</p>
+                    </div>
+                    <div class="product-card">
+                        <img src="marquee/bell.png" alt="Bellose Products">
+                        <h3>Bellose</h3>
+                        <p>Premium Beauty Care</p>
+                    </div>
+                    <div class="product-card">
+                        <img src="marquee/keune.png" alt="Keune Products">
+                        <h3>Keune</h3>
+                        <p>Professional Hair Care</p>
+                    </div>
+                    <div class="product-card">
+                        <img src="marquee/may.png" alt="Maybelline Products">
+                        <h3>Maybelline</h3>
+                        <p>Makeup Essentials</p>
+                    </div>
+                    <div class="product-card">
+                        <img src="marquee/joe.png" alt="Jovees Products">
+                        <h3>Jovees</h3>
+                        <p>Natural Beauty Products</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>>
+
+      <section id="about" class="about" style="padding: 40px; background: linear-gradient(135deg, #f9e7f7, #fbe9dc); text-align: center; border-radius: 15px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);">
+  <h2 class="fade-in" style="font-size: 2.5rem; color: #d63384; font-family: 'Poppins', sans-serif; margin-bottom: 20px; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);">
+    ✨ Beauty Gallery By Rush ✨
+  </h2>
+  <div class="about-content fade-in" style="font-family: 'Roboto', sans-serif; color: #333; line-height: 1.6; font-size: 1.2rem;">
+    <p style="margin: 0 auto; max-width: 800px; font-weight: 400;">
+      Step into a world of beauty and relaxation at <strong style="color: #d63384;">Rush Beauty Salon</strong>. 🌸 Indulge in personalized treatments crafted to enhance your natural glow, all in a welcoming and luxurious setting.
+    </p>
+    <p style="margin: 20px auto 0; max-width: 800px; font-weight: 500;">
+      Your beauty journey begins here—<strong style="color: #ff4081;">schedule your appointment today!</strong> 💆‍♀️💅
+    </p>
+    <a href="#contact" style="display: inline-block; margin-top: 20px; padding: 10px 25px; font-size: 1rem; color: #fff; background-color: #d63384; border-radius: 25px; text-decoration: none; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: transform 0.2s;">
+      Book Now
+    </a>
+  </div>
+</section>
+
+
+ <section id="gallery" class="gallery">
+  <h2 class="fade-in">Our Beautiful Gallery</h2>
+  <div class="gallery-grid">
+    <div class="gallery-item fade-in" onclick="expandImage(this)">
+      <img src="Gallery/1.jpg" alt="Hair Styling" loading="lazy">
+      <div class="overlay">
+        <span>Hair Styling</span>
+      </div>
+    </div>
+    <div class="gallery-item fade-in" onclick="expandImage(this)">
+      <img src="Gallery/2.jpg" alt="Makeup Services" loading="lazy">
+      <div class="overlay">
+        <span>Makeup Services</span>
+      </div>
+    </div>
+    <div class="gallery-item fade-in" onclick="expandImage(this)">
+      <img src="Gallery/3.jpg" alt="Nail Art" loading="lazy">
+      <div class="overlay">
+        <span>Nail Art</span>
+      </div>
+    </div>
+    <div class="gallery-item fade-in" onclick="expandImage(this)">
+      <img src="Gallery/4.jpg" alt="Spa Treatment" loading="lazy">
+      <div class="overlay">
+        <span>Spa Treatment</span>
+      </div>
+    </div>
+    <div class="gallery-item fade-in" onclick="expandImage(this)">
+      <img src="Gallery/5.jpg" alt="Facial Treatment" loading="lazy">
+      <div class="overlay">
+        <span>Facial Treatment</span>
+      </div>
+    </div>
+    <div class="gallery-item fade-in" onclick="expandImage(this)">
+      <img src="Gallery/6.jpg" alt="Hair Coloring" loading="lazy">
+      <div class="overlay">
+        <span>Hair Coloring</span>
+      </div>
+    </div>
+    <div class="gallery-item fade-in" onclick="expandImage(this)">
+      <img src="Gallery/7.jpg" alt="Bridal Makeup" loading="lazy">
+      <div class="overlay">
+        <span>Bridal Makeup</span>
+      </div>
+    </div>
+    <div class="gallery-item fade-in" onclick="expandImage(this)">
+      <img src="Gallery/8.jpg" alt="Body Treatment" loading="lazy">
+      <div class="overlay">
+        <span>Body Treatment</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for expanded image -->
+  <div id="imageModal" class="modal">
+    <span class="close-modal">&times;</span>
+    <img id="expandedImg" src="" alt="Expanded Image">
+    <div class="modal-caption"></div>
+  </div>
+</section>
+
+<style>
+.gallery {
+  padding: 4rem 0;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery h2 {
+  margin-bottom: 2rem;
+  color: #333;
+  font-size: 2.5rem;
+  position: relative;
+}
+
+.gallery h2::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: #ff69b4;
+  margin: 10px auto;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 0 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  padding: 1rem;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .overlay {
+  transform: translateY(0);
+}
+
+.overlay span {
+  color: white;
+  font-size: 1.1rem;
+  display: block;
+  text-align: center;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal.active {
+  display: flex;
+  opacity: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal img {
+  max-width: 90%;
+  max-height: 90vh;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.close-modal {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: #fff;
+  font-size: 40px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.modal-caption {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: white;
+  font-size: 1.2rem;
+  padding: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .gallery-item img {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Animation delay for staggered effect */
+.gallery-item:nth-child(1) { animation-delay: 0.1s; }
+.gallery-item:nth-child(2) { animation-delay: 0.2s; }
+.gallery-item:nth-child(3) { animation-delay: 0.3s; }
+.gallery-item:nth-child(4) { animation-delay: 0.4s; }
+.gallery-item:nth-child(5) { animation-delay: 0.5s; }
+.gallery-item:nth-child(6) { animation-delay: 0.6s; }
+.gallery-item:nth-child(7) { animation-delay: 0.7s; }
+.gallery-item:nth-child(8) { animation-delay: 0.8s; }
+</style>
+
+<script>
+function expandImage(element) {
+  const modal = document.getElementById('imageModal');
+  const expandedImg = document.getElementById('expandedImg');
+  const modalCaption = document.querySelector('.modal-caption');
+  const img = element.querySelector('img');
+  const caption = element.querySelector('.overlay span').textContent;
+
+  expandedImg.src = img.src;
+  expandedImg.alt = img.alt;
+  modalCaption.textContent = caption;
+  modal.classList.add('active');
+
+  // Close modal when clicking outside the image
+  modal.onclick = function(e) {
+    if (e.target === modal || e.target.classList.contains('close-modal')) {
+      modal.classList.remove('active');
+    }
+  }
+}
+
+// Intersection Observer for fade-in animation
+document.addEventListener('DOMContentLoaded', function() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationPlayState = 'running';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(item => {
+    item.style.animationPlayState = 'paused';
+    observer.observe(item);
+  });
+});
+</script>
+
+
+      <section id="contact" class="contact">
+  <h2 class="fade-in">Contact Us</h2>
+  <p class="fade-in">Get in touch with us quickly and conveniently using one of the options below:</p>
+  <div class="contact-options fade-in">
+    <!-- Call Us -->
+    <a href="tel:+94764221892" class="contact-option">
+      <div class="icon">📞</div>
+      <span>Call Us</span>
+    </a>
+
+    <!-- WhatsApp Message -->
+    <a href="https://wa.me/94764221892" target="_blank" class="contact-option">
+      <div class="icon">💬</div>
+      <span>WhatsApp</span>
+    </a>
+
+    <!-- Facebook Messenger -->
+    <a href="https://m.me/BeautyGalleryByRush" target="_blank" class="contact-option">
+      <div class="icon">📩</div>
+      <span>Messenger</span>
+    </a>
+  </div>
+
+  <style>
+    .contact {
+      padding: 2rem;
+      text-align: center;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      margin: 2rem auto;
+    }
+
+    .contact h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    .contact p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      color: #666;
+    }
+
+    .contact-options {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-option {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      background-color: #fff;
+      color: #333;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .contact-option:hover {
+      background-color: #f0f0f0;
+      border-color: #ffcc00;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .contact-option .icon {
+      margin-right: 0.5rem;
+      font-size: 1.5rem;
+    }
+
+    @media (min-width: 480px) {
+      .contact-options {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .contact-option {
+        flex: 1;
+        margin: 0 0.5rem;
+      }
+
+      .contact-option:first-child {
+        margin-left: 0;
+      }
+
+      .contact-option:last-child {
+        margin-right: 0;
+      }
+    }
+  </style>
+</section>
+
+	<section id="floating-call" class="floating-call-section">
+  <a href="tel:+94712345678" class="floating-call-btn" aria-label="Call Us">
+    <div class="icon">📞</div>
+    <span>Call Us</span>
+  </a>
+</section>
+
+	<style>
+  /* Floating Call Button Section */
+  .floating-call-section {
+    position: fixed;
+    bottom: 20px;  /* Adjust vertical position */
+    right: 20px;   /* Adjust horizontal position */
+    z-index: 1000;  /* Make sure it's on top of other elements */
+  }
+
+  /* Floating Call Button Styling */
+  .floating-call-btn {
+    background-color: #ff4f82;  /* Pink color for the button */
+    color: #fff;  /* Text color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;  /* Slightly rounded corners */
+    padding: 10px 20px;  /* Adjust padding for button */
+    font-size: 18px;  /* Text size */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    text-decoration: none;  /* Remove underline from link */
+  }
+
+  .floating-call-btn .icon {
+    margin-right: 8px;  /* Space between icon and text */
+    font-size: 24px;  /* Icon size */
+  }
+
+  .floating-call-btn:hover {
+    transform: scale(1.1);  /* Slightly enlarge button on hover */
+  }
+
+  .floating-call-btn span {
+    font-weight: bold;  /* Make the text bold */
+  }
+
+  /* Mobile Responsiveness */
+  @media (max-width: 768px) {
+    .floating-call-btn {
+      padding: 10px 15px;  /* Adjust button padding for smaller screens */
+      font-size: 16px; /* Adjust font size */
+    }
+
+    .floating-call-btn .icon {
+      font-size: 20px; /* Adjust icon size on mobile */
+    }
+  }
+</style>
+
+
+
+
+      <footer class="fade-in">
+  <p>&copy; 2025 <a href="https://www.teczos.cloud" target="_blank" class="pink-link">Teczos Cloud</a>. All rights reserved.</p>
+</footer>
+		<style>
+  .pink-link {
+    color: #ff4f82;  /* Pink color for the link */
+    text-decoration: none;  /* Remove underline */
+  }
+
+  .pink-link:hover {
+    text-decoration: underline;  /* Underline on hover */
+  }
+</style>
+
+
+
+    </body>
+    </html>
